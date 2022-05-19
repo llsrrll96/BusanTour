@@ -8,26 +8,27 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-public class ReviewBoard 
+public class TakeRoom 
 {
-	private int boardId;
-	private int num;
-	
+	private int takeRoomId;
 	private String title;
+	private Date startDate;
+	private Date endDate;
 	
-	// fk
+	//fk
 	private int userId;
-	private String contents;
 	//fk
 	private int contentsId;
-	private String area1; //지역1
-	private String divide; // 테마
-	private int hitcount;
-	private int replycnt;
+	
+	private String openYN; // OPEN/CLOSE여부
+	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형
 	@Column(name="regdate")
 	private Date regdate; // 등록일자
+
 	
 	
+	
+
 }

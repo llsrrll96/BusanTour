@@ -3,7 +3,7 @@ package com.tour.app.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+//테스트주석입니다!!
 @Data
 @NoArgsConstructor @AllArgsConstructor
 public class InterestBoardPK {

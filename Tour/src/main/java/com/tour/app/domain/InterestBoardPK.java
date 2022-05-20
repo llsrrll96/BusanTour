@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//05.20.16:15 테스트 주석
-
 @Data
 @NoArgsConstructor @AllArgsConstructor
 public class InterestBoardPK {

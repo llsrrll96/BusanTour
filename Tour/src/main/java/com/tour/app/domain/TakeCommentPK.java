@@ -8,7 +8,7 @@ import lombok.Data;
 public class TakeCommentPK implements Serializable{
 	
 	private int takeCommentId;
-
+	
 	private int takeRoomId;
 
 }

@@ -25,9 +25,11 @@ import lombok.Setter;
 public class TakeMember 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="takeRoomId")
 	private TakeRoom takeroom;

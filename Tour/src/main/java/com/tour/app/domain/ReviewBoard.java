@@ -19,7 +19,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import lombok.Data;
 
 @Data
-//@Entity
+@Entity
 @IdClass(ReviewBoardPK.class)
 public class ReviewBoard 
 {

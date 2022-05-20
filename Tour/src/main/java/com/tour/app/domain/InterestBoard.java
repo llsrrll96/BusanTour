@@ -1,3 +1,4 @@
+//테스트 주석추가 2!!
 package com.tour.app.domain;
 
 import java.util.Date;

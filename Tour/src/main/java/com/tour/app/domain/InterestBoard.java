@@ -25,9 +25,8 @@ import lombok.Setter;
 @IdClass(InterestBoardPK.class)
 public class InterestBoard {
 	@Id @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="userid")
-	@Getter @Setter
-	private int userId; //필수, 사용자 ID
+	@JoinColumn(name="userId")
+	private Member member; //필수, 사용자 ID
 	
 	
 	@Id

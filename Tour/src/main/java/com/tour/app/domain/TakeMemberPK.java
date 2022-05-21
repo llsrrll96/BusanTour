@@ -6,8 +6,8 @@ import lombok.Data;
 
 @Data
 public class TakeMemberPK implements Serializable {
-	private int userid;
+	private int userId;
 
-	private int takeRoomId;
+	private int takeroom; // 외래키 일 경우 클래스명
 
 }

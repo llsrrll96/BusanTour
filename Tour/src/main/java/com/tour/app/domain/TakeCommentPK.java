@@ -9,6 +9,6 @@ public class TakeCommentPK implements Serializable{
 	
 	private int takeCommentId;
 
-	private int takeRoomId;
+	private int takeroom; // takeroom 클래스명
 
 }

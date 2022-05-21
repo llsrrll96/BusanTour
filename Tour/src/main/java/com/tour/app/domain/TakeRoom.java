@@ -27,7 +27,7 @@ public class TakeRoom
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int takeRoomId;
 	private String title;
-	
+
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="startDate")

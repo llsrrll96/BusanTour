@@ -27,7 +27,7 @@ public class TakeComment
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int takeCommentId;
-	
+
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="takeRoomId")

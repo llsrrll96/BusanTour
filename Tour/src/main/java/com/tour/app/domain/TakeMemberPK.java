@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class TakeMemberPK implements Serializable {
 	private int userid;
-	
+
 	private int takeRoomId;
 
 }

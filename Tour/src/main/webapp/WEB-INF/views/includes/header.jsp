@@ -20,7 +20,7 @@
 
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-light navbar-light border-bottom">
 <div class="container">
   <!--왼쪽 -->
 	<ul class="navbar-nav mr-auto">

@@ -20,7 +20,7 @@
 
 
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-light navbar-light border-bottom">
 <div class="container">
   <!--왼쪽 -->
 	<ul class="navbar-nav mr-auto">
@@ -42,6 +42,7 @@
 			      <a class="nav-link" href="/login">로그인</a>
 			    </li>
 	</ul>
+	<hr>
 	<!-- 로그인 이후 [로그아웃, 마이메뉴] -->
 	
     

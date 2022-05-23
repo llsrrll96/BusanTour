@@ -23,18 +23,16 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light border-bottom">
 <div class="container">
   <!--왼쪽 -->
-	<ul class="navbar-nav mr-auto">
+	<ul class="navbar-nav mr-auto ">
 			    <li class="nav-item">
 			      <a class="navbar-brand" href="/" >
 			      	<img src="\resources\img\busan_logo.png"  width="100" height="50" alt="홈으로">
 			      </a>
 			    </li>
-
-  
     </ul>
     
  	<!-- 오른쪽 -->
-	<ul class="navbar-nav">
+	<ul class="d-flex navbar-nav">
 		    <li class="nav-item">
 			      <a class="nav-link" href="/join">회원가입</a>
 			    </li>

@@ -7,8 +7,6 @@
 <title>tourreviewList</title>
 </head>
 <body>
-text
-<br>
 
 <%@ include file="../includes/boardCategory.jsp" %>
 

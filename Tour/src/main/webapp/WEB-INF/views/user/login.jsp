@@ -1,17 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+    
+ <%@ include file="../includes/header.jsp" %>
+    
+
 <head>
 <meta charset="UTF-8">
-<title>customLogin</title>
+<title>로그인</title>
 </head>
 <body>
 
-<!--SecurityConfig 에 /loginPro 으로 넘어가도록 정의-->
-<form action="/loginPro" method="post"> 
-	ID :       <input type="text"            name="username" /><br/>
-	PWD :  <input type="password"  name="password"/><br/>
+<c:if test="${not empty errorMsg }">
+${errorMsg }
+<script>
+alert(${errorMsg});
+</script>
+</c:if>
+
+<form action="/login" method="post"> 
+	이름 :       <input type="text"            name="username" /><br/>
+	비밀번호 :  <input type="password"  name="password"/><br/>
 	<button>로그인</button>
 </form>
 

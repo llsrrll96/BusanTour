@@ -1,16 +1,23 @@
 package com.tour.app.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.tour.app.config.auth.UserFailHandler;
+
 //환경설정 파일
 
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)   // @PreAuthorize("isAuthenticated()")  사용
 public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티  
 {
+	@Autowired
+	private UserFailHandler userFailHandler;
 	@Bean
 	public BCryptPasswordEncoder encodePwd() { // 패스워드 암호화 빈 등록
 		return new BCryptPasswordEncoder();
@@ -26,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티
 			.and()
 				.formLogin()
 				.loginPage("/login") // 커스텀 페이지
-				.loginProcessingUrl("/loginPro")
+				.loginProcessingUrl("/login")
+				.failureHandler(userFailHandler)
 				.defaultSuccessUrl("/")
 			.and()
 				.logout()

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +49,16 @@
 			<li class="nav-item">
 			      <a class="nav-link" href="/login">로그인</a>
 			    </li>
-
-	</ul>
+			    
+<!-- 			  로그인 -->
+			<sec:authorize access="isAuthenticated()">
+				<li class="nav-item">
+				<a class="navbar-brand" 	href="/logout">
+				   로그아웃(
+					<sec:authentication property="principal.member.name"/>) </a></li>	
+				</sec:authorize>
+			</ul>
+	
     
  </div>
 </nav>

@@ -1,5 +1,6 @@
 package com.tour.app.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,22 +35,22 @@ public class Member {
 	
 	private String interField; //필수, 관심분야 한줄
 	private String address; //필수X, 주소
-	private String role; //필수, 권한역할
+	private String role; //필수, 권한역할    --> ADMIN_ROLE, USER_ROLE
 	private String withdraw; //필수, 탈퇴여부
 	
 	// 리뷰보드 양방향
 	@OneToMany(mappedBy="member")
-	private List<ReviewBoard> reviewBoards;
+	private List<ReviewBoard> reviewBoards  = new ArrayList<>();
 	
 	//tourarea는 일단 단방향
 	
 	// 관심 보드
 	@OneToMany(mappedBy="member")
-	private List<InterestBoard> interestBoards;
+	private List<InterestBoard> interestBoards  = new ArrayList<>();
 	
 	// 참가 모집 글 양방향
 	@OneToMany(mappedBy="member")
-	private List<TakeRoom> takeRoom;
+	private List<TakeRoom> takeRoom  = new ArrayList<>();
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형

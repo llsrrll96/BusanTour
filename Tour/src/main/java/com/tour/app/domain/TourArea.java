@@ -14,8 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +41,8 @@ public class TourArea
 	private String divide; // 테마
 	private String location;
 	private String title;
+	@Transient 
+	private MultipartFile upload; //05.23 추가. 이미지 업로드.
 	private String imageUrl;
 	private String image2Url;
 	private String detailIntro;

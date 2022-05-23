@@ -16,7 +16,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  
-<title>KJH.com</title>
+<title>함계해요 부산여행</title>
 </head>
 <body>
 
@@ -42,20 +42,23 @@
     
     </ul>
  			<!-- 오른쪽 -->
+	<!-- 			  로그인 -->
 	<ul class="navbar-nav">
+		<sec:authorize access="isAnonymous()">
 		    <li class="nav-item">
 			      <a class="nav-link" href="/join">회원가입</a>
 			    </li>
 			<li class="nav-item">
 			      <a class="nav-link" href="/login">로그인</a>
 			    </li>
-			    
-<!-- 			  로그인 -->
+		</sec:authorize>
+
 			<sec:authorize access="isAuthenticated()">
 				<li class="nav-item">
-				<a class="navbar-brand" 	href="/logout">
-				   로그아웃(
-					<sec:authentication property="principal.member.name"/>) </a></li>	
+				 <a class="navbar-brand" 	href="/logout">
+				   로그아웃(<sec:authentication property="principal.member.name"/>) 
+				 </a>
+				 </li>	
 				</sec:authorize>
 			</ul>
 	

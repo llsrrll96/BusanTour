@@ -7,6 +7,7 @@
 <title>tourareaList</title>
 </head>
 <body>
+<%@ include file="../includes/boardCategory.jsp" %>
 
 </body>
 </html>

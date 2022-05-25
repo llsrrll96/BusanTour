@@ -10,6 +10,16 @@
 
 <%@ include file="../includes/boardCategory.jsp" %>
 
+<div class="container root" style="background-color: red;">
+
+
+<!-- 회원만 -->
+<button type="button" class="btn btn-light" , onclick="location.href='tourreviewForm'">여행 리뷰 쓰기</button>
+
+</div>
 
 </body>
+
+
+
 </html>

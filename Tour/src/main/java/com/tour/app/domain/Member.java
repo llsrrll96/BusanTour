@@ -15,10 +15,16 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Data
-@Entity
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter@Setter@Entity
+@NoArgsConstructor
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,16 +47,19 @@ public class Member {
 	
 	// 리뷰보드 양방향
 	@OneToMany(mappedBy="member")
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
 	private List<ReviewBoard> reviewBoards  = new ArrayList<>();
 	
 	//tourarea는 일단 단방향
 	
 	// 관심 보드
 	@OneToMany(mappedBy="member")
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
 	private List<InterestBoard> interestBoards  = new ArrayList<>();
 	
 	// 참가 모집 글 양방향
-	@OneToMany(mappedBy="member")
+	@OneToMany(mappedBy="member")	
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
 	private List<TakeRoom> takeRoom  = new ArrayList<>();
 	
 	@CreationTimestamp

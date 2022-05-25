@@ -1,5 +1,6 @@
 package com.tour.app.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import com.tour.app.config.auth.PrincipalDetails;
 import com.tour.app.domain.Member;
 import com.tour.app.domain.ReviewBoard;
 import com.tour.app.domain.TourArea;
+import com.tour.app.dto.TourReviewDTO;
+import com.tour.app.dto.TourReviewDTOInterface;
 import com.tour.app.repository.MemberJpaRepository;
 import com.tour.app.repository.TourReviewJpaRepository;
 
@@ -50,6 +53,40 @@ public class TourReviewService
 		System.out.println("저장시도중");
 		// 트랜잭션 3.
 		tourReviewJpaRepository.save(reviewBoard);
+	}
+
+	@Transactional
+	public List<TourReviewDTOInterface> findReviewBoardList() 
+	{
+		List<TourReviewDTOInterface> tourReviewDTOs = tourReviewJpaRepository.findReviewBoardList();
+//		tourReviewDTOs.forEach(
+//					tourReviewDTO -> tourReviewDTOs.add(
+//								new TourReviewDTO(
+//										tourReviewDTO.getNum(),
+//										tourReviewDTO.getTitle(),
+//										tourReviewDTO.getNick_name(),
+//										tourReviewDTO.getRegdate(),
+//										tourReviewDTO.getHitcount()
+//								)
+//							
+//					)
+//		);
+		
+//        userPostList.forEach(
+//                userPost -> userPostList.add(
+//                        new UserPost(
+//                                userPost.getTopic(),
+//                                userPost.getContent(),
+//                                userPost.getCreateAt()
+//                        )
+//                )
+//        );
+		
+		return tourReviewDTOs;
+	}
+
+	public ReviewBoard findById(int num) {
+		return tourReviewJpaRepository.findByNum(Integer.valueOf(num));
 	}
 
 }

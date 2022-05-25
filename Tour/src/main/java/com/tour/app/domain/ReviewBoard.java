@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -16,17 +18,21 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @IdClass(ReviewBoardPK.class)
 public class ReviewBoard 
 {
 	@Id
-	private int boardId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer num;
+	
 	@Id
-	private int num;
+	private int boardId;
 	
 	private String title;
 	
@@ -44,7 +50,9 @@ public class ReviewBoard
 	private String contents;
 	private String area1; //지역1
 	private String divide; // 테마
+	@Column(columnDefinition = "integer default 0")
 	private int hitcount;
+	@Column(columnDefinition = "integer default 0")
 	private int replycnt;
 	
 	@CreationTimestamp

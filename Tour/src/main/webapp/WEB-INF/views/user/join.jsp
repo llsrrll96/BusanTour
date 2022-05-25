@@ -28,7 +28,7 @@
 									<div class="mb-2 w-100">
 										<label class="text-muted" for="nickname">닉네임</label>
 									</div>
-									<input id="nickname" type="password" class="form-control" name="nickname" required>
+									<input id="nickname" type="text" class="form-control" name="nickname" required>
 								</div>
 								
 								<div class="mb-3">
@@ -56,16 +56,16 @@
 								
 								<div class="mb-3">
 									<div class="mb-2 w-100">
-										<label class="text-muted" for="email">연락처</label>
+										<label class="text-muted" for="phone">연락처</label>
 									</div>
-									<input id="email" type="email" class="form-control" name="email" >
+									<input id="phone" type="phone" class="form-control" name="phone >
 								</div>
 								
 								<div class="mb-3">
 									<div class="mb-2 w-100"
-										<label class="text-muted" for="phone">관심분야 한 줄</label>
+										<label class="text-muted" for="interfield">관심분야 한 줄</label>
 									</div>
-									<input id="phone" type="text" class="form-control" name="phone" >
+									<input id="interfield" type="text" class="form-control" name="interfield" >
 								</div>
 								
 								<div class="mb-3">

@@ -35,7 +35,9 @@ public class TourReviewService
 	// contentsId : 해당 게시글의 쿼리 스트링값
 	// hitcount, replycnt, regdate 자동생성
 	@Transactional
-	public void registerReview(ReviewBoard reviewBoard, @AuthenticationPrincipal  PrincipalDetails principal) 
+	public void registerReview(ReviewBoard reviewBoard, 
+									@AuthenticationPrincipal  PrincipalDetails principal
+									,int contentsId) 
 	{
 		reviewBoard.setBoardId(100);
 		
@@ -44,10 +46,11 @@ public class TourReviewService
 		Member member = memberJpaRepository.findByName(principal.getMember().getName());
 		reviewBoard.setMember(member);
 		
+		
 		// 게시글의 Id 는 임시로
 		// 트랜잭션 2.
 		TourArea tourArea = new TourArea();
-		tourArea.setContentsId(1);
+		tourArea.setContentsId(contentsId);
 		reviewBoard.setTourArea(tourArea);
 		
 		System.out.println("저장시도중");
@@ -56,32 +59,10 @@ public class TourReviewService
 	}
 
 	@Transactional
-	public List<TourReviewDTOInterface> findReviewBoardList() 
+	public List<TourReviewDTOInterface> findReviewBoardList(int contentsid) 
 	{
-		List<TourReviewDTOInterface> tourReviewDTOs = tourReviewJpaRepository.findReviewBoardList();
-//		tourReviewDTOs.forEach(
-//					tourReviewDTO -> tourReviewDTOs.add(
-//								new TourReviewDTO(
-//										tourReviewDTO.getNum(),
-//										tourReviewDTO.getTitle(),
-//										tourReviewDTO.getNick_name(),
-//										tourReviewDTO.getRegdate(),
-//										tourReviewDTO.getHitcount()
-//								)
-//							
-//					)
-//		);
-		
-//        userPostList.forEach(
-//                userPost -> userPostList.add(
-//                        new UserPost(
-//                                userPost.getTopic(),
-//                                userPost.getContent(),
-//                                userPost.getCreateAt()
-//                        )
-//                )
-//        );
-		
+		List<TourReviewDTOInterface> tourReviewDTOs = tourReviewJpaRepository.findReviewBoardList(contentsid);
+
 		return tourReviewDTOs;
 	}
 

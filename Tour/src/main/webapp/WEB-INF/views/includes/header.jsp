@@ -16,7 +16,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  
-<title>함계해요 부산여행</title>
+<title>함께해요 부산여행</title>
 </head>
 <body>
 
@@ -44,6 +44,12 @@
  			<!-- 오른쪽 -->
 	<!-- 			  로그인 -->
 	<ul class="navbar-nav">
+		<li class="nav-item">
+	      <a class="nav-link" href="/myBoard/insert">마이페이지 글쓰기</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="/myBoard/list">마이페이지 리스트</a>
+	    </li>
 		<sec:authorize access="isAnonymous()">
 		    <li class="nav-item">
 			      <a class="nav-link" href="/join">회원가입</a>

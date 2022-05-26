@@ -41,7 +41,7 @@ public class MyBoardController {
 	public String insert(MyBoard myBoard, @AuthenticationPrincipal PrincipalDetails principal) {
 		
 		myBoardService.insert(myBoard, principal.getMember());
-		return "/mypage/list";
+		return "redirect:/myBoard/list";
 	}
 	//게시글 전체보기 
 	@GetMapping("list")

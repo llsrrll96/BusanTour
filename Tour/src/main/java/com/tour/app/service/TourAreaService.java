@@ -5,13 +5,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tour.app.config.auth.PrincipalDetails;
 //import com.example.demo4.model.FileBoard;
 //import com.example.demo4.repository.FileRepository;
-import com.tour.app.domain.TourArea; 
+import com.tour.app.domain.TourArea;
+import com.tour.app.dto.TourAreaDTOInterface;
+import com.tour.app.dto.TourReviewDTOInterface;
 import com.tour.app.repository.TourAreaJpaRepository;
 
 
@@ -20,32 +26,61 @@ public class TourAreaService {
 	@Autowired
 	private TourAreaJpaRepository tourAreaJpaRepository;
 
-	//파일추가
-	public void fileInsert(TourArea fboard, String uploadFolder) {
-		UUID uuid = UUID.randomUUID();
-		MultipartFile f = fboard.getUpload();  //업로드할 파일 
-		String uploadFileName = "";
-		if(!f.isEmpty()) { //파일이 선택됨
-			uploadFileName = uuid.toString()+"_"+f.getOriginalFilename();
-			File saveFile = new File(uploadFolder,uploadFileName);
-			
-			try {
-				f.transferTo(saveFile); //파일 업로드
-				fboard.setImageUrl(uploadFileName); //테이블에 저장될 파일 이름
-			
-				
-				tourAreaJpaRepository.save(fboard);
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-	}
-	//파일 리스트
+
 	public List<TourArea> findAll(){
 		return tourAreaJpaRepository.findAll();
 	}
+	
+	// 사용자가 tourarea 등록하는 메소드
+	public void insertTourArea(TourArea tourarea, String uploadFolder) 
+	{
+		System.out.println("service insertTourArea");
+				
+		UUID uuid = UUID.randomUUID(); //파일 이름 겹치지 않게
+
+		MultipartFile mfImage = tourarea.getImageUrl();
+		MultipartFile mfThumImage = tourarea.getThumimage_url();
+		
+		String mfImageName="";
+		String mfThumImageName="";
+		
+		try 
+		{
+			if(!mfImage.isEmpty())
+			{
+				mfImageName = uuid.toString()+mfImage.getOriginalFilename();
+				
+				mfImage.transferTo(new File(uploadFolder, mfImageName));
+				tourarea.setImagefile(mfImageName);
+				
+				System.out.println(mfImageName);
+			}
+			if(!mfThumImage.isEmpty())
+			{
+				mfThumImageName = uuid.toString()+mfThumImage.getOriginalFilename();
+				
+				mfThumImage.transferTo(new File(uploadFolder, mfThumImageName));
+				tourarea.setThumimagefile(mfThumImageName);
+				System.out.println(mfThumImageName);
+			}
+			tourAreaJpaRepository.save(tourarea);
+		} catch (IllegalStateException | IOException e) {
+			System.out.println("TourAreaService error: "+e.getMessage());
+		}
+		
+	}
+	
+	@Transactional
+	public List<TourAreaDTOInterface> findTourAreaList() {
+
+		return 	tourAreaJpaRepository.findTourAreaList();
+
+	}
+
+	public TourArea findById(int contents_id) {
+		return tourAreaJpaRepository.findByContentsId(Integer.valueOf(contents_id));
+	}
+
 	
 }
 

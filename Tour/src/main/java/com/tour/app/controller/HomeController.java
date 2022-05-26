@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tour.app.domain.Member;
 import com.tour.app.repository.MemberJpaRepository;
 import com.tour.app.service.MemberService;
+import com.tour.app.service.TourAreaService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,8 @@ public class HomeController
 {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private TourAreaService tourAreaService;
 	
 	private final MemberJpaRepository memberJpaRepository;
 	
@@ -33,6 +36,11 @@ public class HomeController
 	@GetMapping("/")
 	public String home() {
 		return "home";
+	}
+	@GetMapping("main")
+	public String main(Model model) {
+		model.addAttribute("tourareaDTOs", tourAreaService.findTourAreaList());
+		return "mainhome";
 	}
 	
 	@GetMapping("login")

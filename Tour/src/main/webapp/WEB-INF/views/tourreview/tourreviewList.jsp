@@ -16,7 +16,10 @@
 <!-- 회원만 -->
 <div class="row review-header">
 	<h4 class="display-6 mt-3 col-8 align-self-start">여행 리뷰</h4>
-	<button type="button" class="btn btn-light col-4 align-self-end" , onclick="location.href='/tourreview/tourreviewForm'">여행 리뷰 쓰기</button>
+	
+	<sec:authorize access="isAuthenticated()">
+		<button type="button" class="btn btn-light col-4 align-self-end" , onclick="location.href='/tourreview/tourreviewForm'">여행 리뷰 쓰기</button>
+	</sec:authorize>
 </div>
 	<div class="reviewTable">
 			<table class="table table-hover">

@@ -29,6 +29,7 @@ import lombok.Setter;
 public class TourArea 
 {		
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="contents_id")
 	private int contentsId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

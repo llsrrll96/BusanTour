@@ -17,10 +17,21 @@
 <!--       <input type="text" class="form-control" id="writer"  -->
 <!--       placeholder="Enter writer" name="writer" > -->
 <!--     </div> -->
-    <div class="form-group">
-      <label for="area">구군(해운대구)</label>
-      <input type="text" class="form-control" id="area" placeholder="Enter 구군" name="area">
-    </div>
+
+     <div class="form-group">
+       <label for="area">지역</label>
+      <div class="btn-group dropdown">
+		  <button class="btn btn-secondary dropdown-toggle " type="button" id="area1" name="area1" data-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+		  부산전체
+		  </button>
+		  <ul class="dropdown-menu dropdown" id="dropdown-menu" aria-labelledby="dropdownMenuClickable">
+		    <c:forEach var="area1" items="${area1 }">
+		    	<li ><a class="dropdown-item"  >${area1 }</a></li>
+		    </c:forEach>
+		  </ul>
+	      <input type="hidden" class="form-control" id="area"  name="area"  value="부산전체">
+ 
+	</div>
     
      <div class="form-group">
       <label for="location">장소</label>
@@ -67,3 +78,11 @@
      </div> 
   </form>
 </div>
+<script>
+$("#area1").text("부산전체"); //초기값
+$("#dropdown-menu li > a").on('click',function(){
+	$("#area1").text($(this).text());
+	$("#area").val($(this).text());
+
+})
+</script>

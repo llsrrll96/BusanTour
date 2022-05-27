@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tour.app.config.auth.PrincipalDetails;
 import com.tour.app.domain.TourArea;
+import com.tour.app.dto.Area;
 import com.tour.app.service.TourAreaService;
 
 @RequestMapping("/tourarea/*")
@@ -24,9 +25,9 @@ public class TourAreaController {
 
 	// tourarea 등록
 	@GetMapping("tourAreaInsert")
-	public String tourAreaInsert()
+	public String tourAreaInsert(Model model)
 	{
-		
+		model.addAttribute("area1", Area.values());
 		return "tourarea/tourAreaInsert";
 	}
 	@PostMapping("tourAreaInsert")

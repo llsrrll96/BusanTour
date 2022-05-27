@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티
 			.and()
 				.logout()
 				.logoutUrl("/logout")
-				.logoutSuccessUrl("/") // 성공시
+				.logoutSuccessUrl("/main") // 성공시
 				.invalidateHttpSession(true); //세션 해제
 		
 		

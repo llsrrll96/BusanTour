@@ -8,6 +8,9 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +33,7 @@ public class TourAreaService {
 	public List<TourArea> findAll(){
 		return tourAreaJpaRepository.findAll();
 	}
+	
 	
 	// 사용자가 tourarea 등록하는 메소드
 	public void insertTourArea(TourArea tourarea, String uploadFolder) 
@@ -72,14 +76,35 @@ public class TourAreaService {
 	
 	@Transactional
 	public List<TourAreaDTOInterface> findTourAreaList() {
-
 		return 	tourAreaJpaRepository.findTourAreaList();
-
 	}
-
+	
+	//페이징 적용
+	public Page<TourAreaDTOInterface> getList(Pageable pageable){
+		return tourAreaJpaRepository.findTourAreaList(pageable);
+	}
+	
+	public Page<TourAreaDTOInterface> getList(String area, Pageable pageable) {
+		return tourAreaJpaRepository.findByAreaContaining(area, pageable);
+	}
+	
+	public Page<TourAreaDTOInterface> getList(String area, String divide, Pageable pageable) {
+		return tourAreaJpaRepository.findByAreaDivideContaining(area,divide, pageable);
+	}
+	
+	// 게시물 아이디로 상세 
 	public TourArea findById(int contents_id) {
 		return tourAreaJpaRepository.findByContentsId(Integer.valueOf(contents_id));
 	}
+
+
+
+
+
+
+
+
+
 
 	
 }

@@ -1,5 +1,8 @@
 package com.tour.app.domain;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class PageHandler {
 	private int totalCnt; //총 게시물 갯수
 	private int pageSize; //한페이지의 크기(한페이지에 몇 개의 목록이 있는지)

@@ -37,7 +37,7 @@ public class ReviewBoard
 	private String title;
 	
 	// fk
-	@JoinColumn(name="userId")
+	@JoinColumn(name="user_id")
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Member member;
 	

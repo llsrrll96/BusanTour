@@ -54,7 +54,7 @@ public class TakeMemberController {
 	 //참가자 퇼퇴 취소하기(삭제)
 	 @DeleteMapping("delete/{rnum}")
 	 public String delete(@PathVariable Long rnum, @AuthenticationPrincipal PrincipalDetails principal) { 
-		 takememberService.delete(rnum, principal.getMember().getUserId()); 
+		 takememberService.delete(rnum, principal.getMember().getUserid()); 
 	   return "success"; 
 	 }
 }

@@ -61,8 +61,8 @@ public class TakeRoom
 	private TourArea tourarea;
 //	private int contentsid;
 	
-	@Column(columnDefinition = "Long default 0")
-	private Long membercnt;
+	@Column(columnDefinition = "Integer default 0")
+	private int membercnt;
 	private String openyn; // OPEN/CLOSE여부
 	private String nickname;  // 참여오픈방 개설자
 	private String guider;  // 참여오픈방 개설자이름
@@ -88,9 +88,9 @@ public class TakeRoom
 	@JsonIgnoreProperties("takeroom")
 	private List<TakeComment> takecomments;
 	
-	@PrePersist
-	public void prePerist() {
-	  this.membercnt = this.membercnt==null?0:this.membercnt;
-	}
+//	@PrePersist
+//	public void prePerist() {
+//	  this.membercnt = this.membercnt==null?0:this.membercnt;
+//	}
 	
 }

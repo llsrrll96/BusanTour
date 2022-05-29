@@ -24,7 +24,7 @@ public class TakeCommentService {
 				takecomment.getContent(),
 				takecomment.getTakeroom().getNum(),
 				takecomment.getMember().getNickName(),
-				takecomment.getMember().getUserId()
+				takecomment.getMember().getUserid()
 		);
 		
 	}

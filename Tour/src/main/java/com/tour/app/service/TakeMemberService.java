@@ -34,7 +34,7 @@ public class TakeMemberService {
 //		takememberRepository.takememberInsert(null, 0, null, null, null);
 		takememberRepository.entryInsert(
 				takemember.getTakeroom().getNum(),
-				takemember.getMember().getUserId(),
+				takemember.getMember().getUserid(),
 				takemember.getMember().getNickName(),
 				takemember.getTakeyn(),
 				takemember.getRegdate()

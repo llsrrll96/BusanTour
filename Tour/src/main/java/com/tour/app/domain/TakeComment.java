@@ -18,8 +18,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter @Setter
 @Entity
 public class TakeComment 
 {
@@ -29,7 +31,7 @@ public class TakeComment
 
 //	@ManyToOne(fetch = FetchType.LAZY)
 	@ManyToOne
-	@JoinColumn(name="rnum")
+	@JoinColumn(name="num")
 	private TakeRoom takeroom;
 	
 	@ManyToOne

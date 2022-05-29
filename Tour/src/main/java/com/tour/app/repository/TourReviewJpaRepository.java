@@ -16,7 +16,7 @@ public interface TourReviewJpaRepository extends JpaRepository<ReviewBoard, Inte
 	
 	@Query(value="SELECT r.num, r.title, m.nick_name, r.regdate, r.hitcount "
 			+ "FROM review_board r "
-			+ "inner join member m ON r.user_id = m.user_id "
+			+ "inner join member m ON r.userid = m.userid "
 			+ "WHERE contentsid= :contentsid "	, nativeQuery=true)
 	List<TourReviewDTOInterface> findReviewBoardList(int contentsid);
 

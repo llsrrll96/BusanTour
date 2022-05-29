@@ -18,8 +18,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter @Setter
 @Entity
 @IdClass(TakeMemberPK.class)
 public class TakeMember 
@@ -27,7 +29,7 @@ public class TakeMember
 	@Id
 //	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="rnum")
+	@JoinColumn(name="num")
 	private TakeRoom takeroom;
 	
 	@Id

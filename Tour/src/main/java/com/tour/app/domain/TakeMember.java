@@ -5,8 +5,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -16,27 +14,33 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Getter @Setter
+import lombok.Data;
+
+@Data
 @Entity
 @IdClass(TakeMemberPK.class)
 public class TakeMember 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int userId;
-
-	@Id
+//	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="takeRoomId")
+	@JoinColumn(name="rnum")
 	private TakeRoom takeroom;
 	
-	private String takeyn; //참여자의 의견참여여부 표시값
+	@Id
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="userid")
+	private Member member; //사용자 ID
+	private String entrant;  // 참여오픈방 참여자 nickname
+	
+	private String takeyn; //참여자의 의견참여 여부값
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name="regdate")
-	private Date regdate; // 등록일자
+	private Date regdate; // 등록일자,참가일자
 }

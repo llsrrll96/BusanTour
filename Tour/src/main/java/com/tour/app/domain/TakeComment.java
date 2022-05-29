@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -16,29 +15,32 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Getter @Setter
+import lombok.Data;
+
+@Data
 @Entity
-@IdClass(TakeCommentPK.class)
 public class TakeComment 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int takeCommentId;
+	private Long cnum;
 
-	@Id
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="takeRoomId")
+//	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name="rnum")
 	private TakeRoom takeroom;
 	
-	private int userId;  //key값 여부 고민
-	private String comment;
+	@ManyToOne
+	@JoinColumn(name="userid")
+	private Member member;  
+	private String nickname; // 댓글 작성자 nickname
+	private String content;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형
-	@Column(name="regdate")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date regdate; // 작성일자
 
 }

@@ -34,7 +34,7 @@ alert(${errorMsg});
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="username">이름</label>
+									<label class="mb-2 text-muted" for="username">사용자명</label>
 									<input id="username" type="text" class="form-control" name="username" value="" required autofocus>
 									
 								</div>

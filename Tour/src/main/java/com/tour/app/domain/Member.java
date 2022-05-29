@@ -28,7 +28,7 @@ import lombok.Setter;
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="user_id")
+	@Column(name="userid")
 	private int userid; //필수, 사용자 ID
 	@Column(nullable=false)
 	private String name; //필수, 성명

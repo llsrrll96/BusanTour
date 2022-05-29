@@ -21,7 +21,7 @@
 		    <a class="nav-link" href="/tourreview/tourreviewList/">여행 리뷰</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="/takeroom/takeroomList/">여행 참여</a>
+		    <a class="nav-link" href="/takeroom/list/">여행 참여</a>
 		  </li>
 		</ul>
 	</div>

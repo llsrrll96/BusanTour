@@ -29,9 +29,9 @@ public class TakeRoomService {
 		takeroomRepository.save(takeroom);		
 	}
 	//전체보기(페이징 아님)
-//	public List<TakeRoom> findAll() {	
-//			return takeroomRepository.findAll();
-//	}
+	public List<TakeRoom> findAll() {	
+			return takeroomRepository.findAll();
+	}
     //참여하기 오픈방 리스트 전체조회(페이징, 검색)
 	public Page<TakeRoom> findAll(String field, String word, Pageable pageable) {
 		if(field.equals("title"))

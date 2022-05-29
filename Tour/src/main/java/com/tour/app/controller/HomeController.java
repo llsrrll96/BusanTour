@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tour.app.domain.Member;
 import com.tour.app.domain.PageHandler;
+import com.tour.app.dto.Area;
 import com.tour.app.dto.TourAreaDTOInterface;
 import com.tour.app.repository.MemberJpaRepository;
 import com.tour.app.service.MemberService;
@@ -52,7 +53,7 @@ public class HomeController
 	// tourarea 페이징 카드 리스트
 	@GetMapping("main")
 	public String main(Model model,
-			@PageableDefault(size=8, sort="contents_id", direction=Sort.Direction.DESC) Pageable pageable,
+			@PageableDefault(size=6, sort="contents_id", direction=Sort.Direction.DESC) Pageable pageable,
 			@RequestParam(required = false, defaultValue="") String area,
 			@RequestParam(required = false, defaultValue="") String divide)
 			
@@ -72,6 +73,8 @@ public class HomeController
 		model.addAttribute("startBlockPage",startBlockPage);
 		model.addAttribute("endBlockPage", endBlockPage);
 				
+		model.addAttribute("area1",Area.values());
+		
 		return "mainhome";
 	}
 	

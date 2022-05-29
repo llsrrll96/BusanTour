@@ -58,10 +58,6 @@ public class Member {
 	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
 	private List<InterestBoard> interestBoards  = new ArrayList<>();
 	
-	// 참가 모집 글 양방향
-	@OneToMany(mappedBy="member")	
-	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
-	private List<TakeRoom> takeRoom  = new ArrayList<>();
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형

@@ -22,7 +22,7 @@
 		
 	<div class="contanier cards mt-3 d-flex align-content-stretch flex-wrap justify-content-center">
 			<c:forEach items="${tourareaDTOs.content }" var="tourareaDTO">
-				<div class="card col-4" style="max-width: 15rem;">					
+				<div class="card col-4" style="max-width: 18rem;">					
 					<div class="card p-1">
 					  <img class="card-img-top" src="/resources/img/${tourareaDTO.thumimagefile }" onerror="this.src='/resources/img/basis.jpg'" >
 					  
@@ -79,31 +79,43 @@
 				  		 
 				  <div class="page-button text-xs-center">
 	  				  <div class="ms-5 row" >
-				  			<sec:authorize access="isAuthenticated()">
-					  			<button type="button" class="btn btn-light " , onclick="location.href='tourarea/tourAreaInsert'">여행지 쓰기</button>
-							</sec:authorize>
+
 	
 						<form action="/main" method="GET">
-							<div class="search input-group   col">
-								<div class=" input-group-sm col-xs-3">
-									  <span class="input-group-text form-control col-xs-3" >구군</span>
+							<div class="search input-group  col">
+								<div class="input-group-sm col-xs-3">
+<!-- 									  <span class="input-group-text form-control col-xs-3" >구군</span> -->
+		  			  				<div class="input-group-sm">
+									  <button type="button" class="btn btn-secondary  btn-sm input-group-text form-control col-xs-3 dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="dropdownBtn">
+									    구군
+									  </button>
+									  <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenuClickable">
+										    <c:forEach var="area1" items="${area1 }">
+										    	<li ><a class="dropdown-item"  >${area1 }</a></li>
+										    </c:forEach>
+		    						 </ul>
+									</div>
+<!-- 				  			  구군을 선택하면 input에 넣는 방식 -->
 				  			  </div>
 				  				<div class="input-group-sm col-xs-3">
-									  <input class=" form-control col-xs-3" type="text" class="form-control" id="area"  name="area" aria-describedby="구군" value=${param.area }>
+									  <input class=" form-control col-xs-3" type="text" class="form-control" id="area"  name="area" aria-describedby="구군" value="${param.area }" readonly="readonly"
+									  
+									  style="background-color: transparent;" >
 							  </div>
-							  
+
+<!-- 							  테마 -->
 				 				<div class="input-group-sm col-xs-3 ml-3">
 									  <span class="input-group-text form-control" >테마</span>
 							  </div>
 				 				<div class="input-group-sm col-xs-3 ">
 									  <input class="form-control" type="text" class="form-control" id="divide"  name="divide" aria-describedby="테마" value=${param.divide }>
 				  			  </div>
-				  			  <input type="submit" class="btn btn-outline-info col-xs-3 ml-3" value="검색"  id="serach-button">
+				  			  <input type="submit" class="btn btn-outline-info btn-sm col-xs-3 ml-3" value="검색"  id="serach-button">
 							</div>
 						</form>
 							
-							
-				  		<button type="button" class="btn btn-light " , onclick="location.href='/tourarea/tourAreaInsert'">여행지 쓰기</button>
+<!-- 							여행지 쓰기 -->
+				  		<button type="button" class="btn btn-light btn-sm ml-5" , onclick="location.href='/tourarea/tourAreaInsert'">여행지 쓰기</button>
 							
 					</div>
 						
@@ -114,7 +126,10 @@
 	
 <script>
 	
-
+//구군 드랍다운
+$("#dropdown-menu li > a").on('click',function(){
+	$("#area").val($(this).text());
+})
 	
 
 </script>

@@ -44,11 +44,8 @@
  			<!-- 오른쪽 -->
 	<!-- 			  로그인 -->
 	<ul class="navbar-nav">
-		<li class="nav-item">
-	      <a class="nav-link" href="/myBoard/insert">마이페이지 글쓰기</a>
-	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="/myBoard/list">마이페이지 리스트</a>
+	      <a class="nav-link" href="/myBoard/tourReviewList">마이페이지</a>
 	    </li>
 		<sec:authorize access="isAnonymous()">
 		    <li class="nav-item">

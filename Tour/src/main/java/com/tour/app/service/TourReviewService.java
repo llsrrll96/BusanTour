@@ -70,4 +70,25 @@ public class TourReviewService
 		return tourReviewJpaRepository.findByNum(Integer.valueOf(num));
 	}
 
+	
+//	"num"
+//	"title"
+//	"contents"
+//	"area1"
+//	"divide"
+	@Transactional
+	public void updateTourReview(ReviewBoard reviewBoard) 
+	{
+		ReviewBoard rb = tourReviewJpaRepository.findByNum(reviewBoard.getNum());
+		rb.setTitle(reviewBoard.getTitle());
+		rb.setContents(reviewBoard.getContents());
+		rb.setArea1(reviewBoard.getArea1());
+		rb.setDivide(reviewBoard.getDivide());
+	}
+
+	@Transactional
+	public void deleteTourReview(int num) {
+		tourReviewJpaRepository.deleteByNum(Integer.valueOf(num));
+	}
+
 }

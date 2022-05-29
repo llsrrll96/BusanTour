@@ -21,6 +21,8 @@ public interface TourReviewJpaRepository extends JpaRepository<ReviewBoard, Inte
 	List<TourReviewDTOInterface> findReviewBoardList(int contentsid);
 
 	ReviewBoard findByNum(Integer num);
+
+	void deleteByNum(Integer num);
 	
 
 }

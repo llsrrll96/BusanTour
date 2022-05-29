@@ -6,13 +6,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -66,12 +69,45 @@ public class TourReviewController
 	
 	// 여행 리뷰 글 상세보기 
 	@GetMapping("tourreviewView/{num}")
-	public String view(@PathVariable int num ,Model model)
+	public String view(@PathVariable int num ,Model model, @AuthenticationPrincipal  PrincipalDetails principal)
 	{
 		model.addAttribute("reviewBoard", tourReviewService.findById(num));
+		try {
+			model.addAttribute("sessionUserid", principal.getMember().getUserid());
 
+		}catch(NullPointerException e) {
+			model.addAttribute("sessionUserid", "");
+		}
 		return "tourreview/tourreviewView";
 	}
 	
+	// 여행 리뷰 수정 폼
+	@GetMapping("tourreviewUpdateForm/{boardId}/{num}")
+	public String updateForm(@PathVariable int boardId, @PathVariable int num, Model model)
+	{
+		model.addAttribute("reviewBoard", tourReviewService.findById(num));
+		model.addAttribute("area1",Area.values());
+
+		return "tourreview/tourreviewUpdateForm";
+	}
 	
+	// 여행 리뷰 수정 put
+	@PutMapping("update")
+	@ResponseBody
+	public ResponseEntity<String> update(@RequestBody ReviewBoard reviewBoard , 
+			@AuthenticationPrincipal  PrincipalDetails principal )
+	{
+		// 수정하기
+		tourReviewService.updateTourReview(reviewBoard);
+		return ResponseEntity.status(HttpStatus.OK).body("success");
+	}
+	
+	// 여행 리뷰 삭제
+	@DeleteMapping("delete/{num}")
+	@ResponseBody
+	public ResponseEntity<String> delete(@PathVariable int num)
+	{
+		tourReviewService.deleteTourReview(num);
+		return ResponseEntity.status(HttpStatus.OK).body("success");
+	}
 }

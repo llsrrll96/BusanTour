@@ -7,7 +7,8 @@
 	    <div class="d-flex h-45  align-items-center flex-column mt-3 mb-3"  style="font-size:37px">
 			<div class="title mb-auto p-2 bd-highlight" name="title" id="title">${tourarea_title }</div>
 	    <div class="mt-3 mb-3"  >
-	      	<img src="/resources/img/${tourarea_imagefile }"  class="img-fluid img-rounded"  width="700"  alt="메인 이미지">
+	    	      	<img src="/resources/img/${tourarea_imagefile}"  
+	    	      	onerror="this.src='/resources/img/basis.jpg'"   class="img-fluid img-rounded"  width="700"  alt="메인 이미지">
 		    
 		</div> 
 	</div>

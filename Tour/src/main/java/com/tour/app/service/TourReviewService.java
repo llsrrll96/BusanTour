@@ -91,4 +91,12 @@ public class TourReviewService
 		tourReviewJpaRepository.deleteByNum(Integer.valueOf(num));
 	}
 
+	public List<ReviewBoard> findByUserid(int userid) {
+		return tourReviewJpaRepository.findByUserid(Integer.valueOf(userid));
+	}
+
+
+
+
+
 }

@@ -52,6 +52,10 @@ public class TourAreaController {
 		// 화면에서 사용
 		HttpSession session = request.getSession();
 		session.setAttribute("tourarea_title", tourarea.getTitle());
+		if(tourarea.getImagefile()==null) 	{
+			session.setAttribute("tourarea_imagefile", "basis.jpg");
+		}
+		else session.setAttribute("tourarea_imagefile", tourarea.getImagefile());
 		session.setAttribute("tourarea_imagefile", tourarea.getImagefile());
 		session.setAttribute("tourarea_contentsId", tourarea.getContentsId());
 

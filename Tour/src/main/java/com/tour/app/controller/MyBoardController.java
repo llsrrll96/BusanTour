@@ -102,9 +102,10 @@ public class MyBoardController {
 //	//여행 리뷰 리스트(ToueReviewController에서 복사)
 	@GetMapping("tourReviewList")
 	@PreAuthorize("isAuthenticated()")
-	public String list(Model model) 
+	public String list(Model model, @AuthenticationPrincipal PrincipalDetails principal) 
 	{
-		model.addAttribute("reviewBoards", tourReviewService.findAll());
+//		model.addAttribute("reviewBoards", tourReviewService.findAll());
+		model.addAttribute("reviewBoards", tourReviewService.findByUserid(principal.getMember().getUserid()));
 		return "/mypage/tourReviewList"; //jsp
 	}
 	

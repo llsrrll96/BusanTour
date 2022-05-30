@@ -23,6 +23,11 @@ public interface TourReviewJpaRepository extends JpaRepository<ReviewBoard, Inte
 	ReviewBoard findByNum(Integer num);
 
 	void deleteByNum(Integer num);
+
+	@Query(value="select * from review_board where userid= :userid"
+			,nativeQuery = true)
+	List<ReviewBoard> findByUserid(Integer userid);
+
 	
 
 }

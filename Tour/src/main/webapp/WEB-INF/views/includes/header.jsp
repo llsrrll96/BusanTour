@@ -29,15 +29,6 @@
 			      <a class="navbar-brand" href="/">HOME</a>
 			    </li>
 
-			    <li class="nav-item">
-			      <a class="nav-link" href="/tourarea/tourareaList">관광지 목록</a>
-			    </li>
-   			    <li class="nav-item">
-			      <a class="nav-link" href="/tourreview/tourreviewList">여행 리뷰 게시판(목록)</a>
-			    </li>
-   			    <li class="nav-item">
-			      <a class="nav-link" href="/takeroom/takeroomList">참여 모집 게시판(목록)</a>
-			    </li>
 
     
     </ul>

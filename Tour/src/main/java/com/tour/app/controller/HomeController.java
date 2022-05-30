@@ -40,10 +40,10 @@ public class HomeController
 	
 	
 	
-	@GetMapping("/")
-	public String home() {
-		return "home";
-	}
+//	@GetMapping("/")
+//	public String home() {
+//		return "main";
+//	}
 	// tourarea 카드 리스트
 //	@GetMapping("main")
 //	public String main(Model model) {
@@ -51,7 +51,7 @@ public class HomeController
 //		return "mainhome";
 //	}
 	// tourarea 페이징 카드 리스트
-	@GetMapping("main")
+	@GetMapping(value={"/","main"})
 	public String main(Model model,
 			@PageableDefault(size=6, sort="contents_id", direction=Sort.Direction.DESC) Pageable pageable,
 			@RequestParam(required = false, defaultValue="") String area,

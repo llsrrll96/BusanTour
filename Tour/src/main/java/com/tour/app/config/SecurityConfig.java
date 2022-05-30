@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티
 				.loginPage("/login") // 커스텀 페이지
 				.loginProcessingUrl("/login")
 				.failureHandler(userFailHandler)
-				.defaultSuccessUrl("/")
+				.defaultSuccessUrl("/main")
 			.and()
 				.logout()
 				.logoutUrl("/logout")

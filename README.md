@@ -22,7 +22,7 @@
 <br>
 
 ## 3. ERD 설계
-![image](https://user-images.githubusercontent.com/58140426/179436972-e8c459de-c858-4762-b889-5eec2a9a4561.png)
+![mysql-model](https://user-images.githubusercontent.com/58140426/179436972-e8c459de-c858-4762-b889-5eec2a9a4561.png)
 
 <br>
 

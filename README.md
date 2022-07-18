@@ -1,6 +1,6 @@
 # 🌅 함께해요 부산 여행
 
-:pushpin: [발표 PPT] https://www.miricanvas.com/v/1140m3i
+:pushpin: [발표 PPT](https://www.miricanvas.com/v/1140m3i)
 
 ## 1. 제작 기간 & 참여 인원
 - 2022년 05월 16일 ~ 05월 30일
@@ -16,7 +16,6 @@
   - JPA
   - MySQL 
   - JSP
-  - Tiles
   - Ajax
   - JQuery
 

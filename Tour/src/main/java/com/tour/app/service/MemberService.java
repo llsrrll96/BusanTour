@@ -1,14 +1,16 @@
 package com.tour.app.service;
 
-import javax.transaction.Transactional;
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tour.app.domain.Member;
+import com.tour.app.dto.MemberDTO;
 import com.tour.app.repository.MemberJpaRepository;
-
 
 @Service
 public class MemberService 
@@ -25,11 +27,37 @@ public class MemberService
 		String encPass = bCryptPasswordEncoder.encode(rawPass);
 		member.setPassword(encPass);
 		member.setRole("USER_ROLE");
-		member.setWithdraw("1");
+		member.setWithdraw("0"); 
 		
 		
 		memberJpaRepository.save(member);
 	}
+
+	public List<Member> getMemberList() {
+		return memberJpaRepository.findAll();
+	}
+	public List<MemberDTO> getMemberDTOList() {
+		return memberJpaRepository.findAllMemberDTO();
+	}
 	
+	public Long getMemberCount() {
+		return memberJpaRepository.count();
+	}
+
+	@Transactional
+	public void updateMemberRole(String name, String role) 
+	{
+		Member member= memberJpaRepository.findByName(name);
+		member.setRole(role);
+	
+	}
+	
+	@Transactional
+	public void updateMemberWithdraw(String name) 
+	{
+		Member member= memberJpaRepository.findByName(name);
+		if(member.getWithdraw().equals("0")) member.setWithdraw("1");
+		else member.setWithdraw("0");
+	}
 
 }

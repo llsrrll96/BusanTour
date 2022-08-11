@@ -20,7 +20,7 @@
 							<h1 class="fs-4 card-title fw-bold mb-4">회원 가입</h1>
 							
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="username">이름</label>
+									<label class="mb-2 text-muted" for="username">사용자명</label>
 									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
 								</div>
 
@@ -104,7 +104,7 @@
 <script>
 	$("#btnJoin").click(function(){
 		if($("#name").val()==""){
-			alert("이름을 입력해주세요")
+			alert("사용자명을 입력해주세요")
 			return;
 		}
 		if($("#nickname").val()==""){
@@ -149,7 +149,7 @@
 					location.href="/login"
 				}
 				if(resp=="fail"){
-					alert("이미 존재하는 이름입니다.")
+					alert("이미 존재하는 사용자명입니다.")
 					$("#name").focus();
 					$("#name").val("");
 				}

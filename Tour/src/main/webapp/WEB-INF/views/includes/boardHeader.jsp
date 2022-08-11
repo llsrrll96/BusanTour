@@ -33,6 +33,7 @@
 			    </li>
     </ul>
     
+    
 	<ul class="navbar-nav">
 		<sec:authorize access="isAnonymous()">
 		    <li class="nav-item">
@@ -42,8 +43,19 @@
 			      <a class="nav-link" href="/login">로그인</a>
 			    </li>
 		</sec:authorize>
-
+		
+		    	<li class="nav-item">
+			      <a class="nav-link" href="/manage/manageHome">관리자페이지</a>
+			    </li>
+			<sec:authorize access="hasRole('ADMIN_ROLE')">
+		    	<li class="nav-item">
+			      <a class="nav-link" href="/manage/manageHome">관리자페이지</a>
+			    </li>
+			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
+			    <li class="nav-item">
+			      <a class="nav-link" href="/myBoard/tourReviewList">마이페이지</a>
+			    </li>
 				<li class="nav-item">
 				 <a class="navbar-brand" 	href="/logout">
 				   로그아웃(<sec:authentication property="principal.member.name"/>) 

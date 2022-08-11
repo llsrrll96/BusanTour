@@ -29,6 +29,7 @@ import lombok.Setter;
 public class TourArea 
 {		
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="contents_id")
 	private int contentsId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -39,13 +40,17 @@ public class TourArea
 	private String contentsName;
 	private String area;
 	private String divide; // 테마
-	private String location;
+	private String course;
 	private String title;
 	@Transient 
-	private MultipartFile upload; //05.23 추가. 이미지 업로드.
-	private String imageUrl;
-	private String image2Url;
-	private String detailIntro;
+	private MultipartFile imageUrl; //05.23 추가. 이미지 업로드.
+	private String imagefile;
+	@Transient
+	private MultipartFile thumimage_url; 
+	private String thumimagefile;
+	@Column(length = 1000)
+	private String content;
+	private String location; //장소
 	
 	
 	

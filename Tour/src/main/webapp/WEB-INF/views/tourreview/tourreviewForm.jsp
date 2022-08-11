@@ -99,7 +99,7 @@ $("#btnRegister").click(function(){
 		data:JSON.stringify(data),
 		success:function(resp){
 			if(resp=="success"){
-				location.href="tourreview/tourreviewView" //상세보기로
+				location.href="/tourreview/tourreviewList" //상세보기로
 			}else{
 				alert("등록실패, 다시 확인해 주세요.")
 					

@@ -16,7 +16,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  
-<title>함계해요 부산여행</title>
+<title>함께해요 부산여행</title>
 </head>
 <body>
 
@@ -29,21 +29,15 @@
 			      <a class="navbar-brand" href="/">HOME</a>
 			    </li>
 
-			    <li class="nav-item">
-			      <a class="nav-link" href="/tourarea/tourareaList">관광지 목록</a>
-			    </li>
-   			    <li class="nav-item">
-			      <a class="nav-link" href="/tourreview/tourreviewList">여행 리뷰 게시판(목록)</a>
-			    </li>
-   			    <li class="nav-item">
-			      <a class="nav-link" href="/takeroom/takeroomList">참여 모집 게시판(목록)</a>
-			    </li>
 
     
     </ul>
  			<!-- 오른쪽 -->
 	<!-- 			  로그인 -->
 	<ul class="navbar-nav">
+	    <li class="nav-item">
+	      <a class="nav-link" href="/myBoard/tourReviewList">마이페이지</a>
+	    </li>
 		<sec:authorize access="isAnonymous()">
 		    <li class="nav-item">
 			      <a class="nav-link" href="/join">회원가입</a>

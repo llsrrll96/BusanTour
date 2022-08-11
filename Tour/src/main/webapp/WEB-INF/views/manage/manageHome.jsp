@@ -35,9 +35,9 @@
               </div>
             </div>
           </div>
-           
         </div>
       </div>
+      
       <div class="col-xl-3 col-sm-6 col-12 mb-4">
         <div class="card">
           <div class="card-body">
@@ -53,15 +53,31 @@
           </div>
         </div>
       </div>
+      
+            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between px-md-1">
+              <div class="align-self-center">
+                <i class="far fa-comment-alt text-warning fa-3x"></i>
+              </div>
+              <div class="text-end">
+                <h3>API 관리</h3>
+                <a href="/manage/manageAPI"  class="btn btn-light stretched-link" >API 관리</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </section>
 </div>
 
-<script>
+<style>
 
-body {
+.body {
 	  background-color: #f5f7fa;
 	}
-</script>
+</style>
 
 
 

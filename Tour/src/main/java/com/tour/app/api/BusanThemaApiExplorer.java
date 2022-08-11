@@ -6,7 +6,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,18 +13,13 @@ import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tour.app.advice.ErrorCode;
 import com.tour.app.advice.PageEndOverFlowException;
 import com.tour.app.advice.TimeOutIOException;
-import com.tour.app.domain.RecommenedService;
-import com.tour.app.domain.RecommenedService.RecommenedServiceBuilder;
+import com.tour.app.domain.RecommendedService;
 
-import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -46,9 +40,9 @@ public class BusanThemaApiExplorer
 		public BusanThemaApiExplorer(  ) {
 		}
 
-		public  List<RecommenedService> requestAPI(int pageNo, int numOfRows)
+		public  List<RecommendedService> requestAPI(int pageNo, int numOfRows)
 		{
-	        List<RecommenedService> recommenedServices = new ArrayList<>();
+	        List<RecommendedService> recommenedServices = new ArrayList<>();
 	        	urlBuilder =new StringBuilder("http://apis.data.go.kr/6260000/RecommendedService/getRecommendedKr"); /*URL*/
 				urlBuilder.append("?serviceKey="+serviceKey);
 		        urlBuilder.append("&pageNo=" +pageNo); /*페이지번호*/
@@ -94,7 +88,7 @@ public class BusanThemaApiExplorer
 		        
 			        for(Map<String, Object> item :itemList)
 			        {
-			        	RecommenedService rs= RecommenedService.builder()
+			        	RecommendedService rs= RecommendedService.builder()
 			        							.uc_seq(item.get("UC_SEQ").toString())
 			        							.main_title(item.get("MAIN_TITLE").toString())
 			        							.gugun_nm(item.get("GUGUN_NM").toString())

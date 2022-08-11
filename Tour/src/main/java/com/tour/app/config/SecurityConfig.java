@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -13,6 +14,8 @@ import com.tour.app.config.auth.UserFailHandler;
 //환경설정 파일
 
 @Configuration
+//매 Request는 스프링 시큐리티의 필터들을 거친다. 우리는 개발하면서 어떤 request에 어떤 Filter가 호출되는지의 과정을 확인하고 싶을때가 있는데, 이때 아래 어노테이션을 선언하자.
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)   // @PreAuthorize("isAuthenticated()")  사용
 public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티  
 {

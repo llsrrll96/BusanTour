@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tour.app.domain.Member;
-import com.tour.app.domain.RecommenedService;
+import com.tour.app.domain.RecommendedService;
 import com.tour.app.dto.APIMessage;
 import com.tour.app.dto.StatusEnum;
 import com.tour.app.service.ManageService;

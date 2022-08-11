@@ -19,7 +19,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class RecommenedService 
+public class RecommendedService 
 {
 	@Id
 	String uc_seq;

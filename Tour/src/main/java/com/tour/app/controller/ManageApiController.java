@@ -21,9 +21,12 @@ import com.tour.app.service.ManageService;
 @Controller
 public class ManageApiController 
 {
-	@Autowired
 	private ManageService manageService;
 	
+	public ManageApiController(ManageService manageService) {
+		this.manageService = manageService;
+	}
+
 	@PostMapping("attraction")
 	@ResponseBody
 	public ResponseEntity<APIMessage> attraction(@RequestBody HashMap<String, Object> pageData, Model model)

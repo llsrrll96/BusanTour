@@ -1,17 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../includes/boardHeader.jsp" %>
+<%@ include file="../includes/manageHeader.jsp" %>
 
-<head>
-<meta charset="UTF-8">
-<title>관리자 홈</title>
-</head>
+
 <body>
 
 			
-			
-
-<div class="container mt-5">
+	
+<div class="container mt-5  mr-4">
   <section>
     <div class="row">
       <div class="col-12 mt-3 mb-1">
@@ -54,7 +50,7 @@
         </div>
       </div>
       
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
+      <div class="col-xl-3 col-sm-6 col-12 mb-4">
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">

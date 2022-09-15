@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../includes/boardHeader.jsp" %>
-
-<head>
-<meta charset="UTF-8">
-<title>멤버 관리</title>
-</head>
-<body>
+<%@ include file="../includes/manageHeader.jsp" %>
 
 
-	<div class="container member-table">
-		<div class="div_link mt-1">
+
+	<div class="container member-table mr-4"">
+		<div class="div_link mt-4">
 			<a href="/manage/manageHome" class="link" style = "color: rgb(0, 0, 150);">관리 홈</a>
 		</div>
 		<h3 class="fs-1 mt-5 mb-5">멤버 관리 ${count }</h3>

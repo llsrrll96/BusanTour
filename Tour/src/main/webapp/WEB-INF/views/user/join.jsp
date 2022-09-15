@@ -4,8 +4,19 @@
     
 <head>
 <meta charset="UTF-8">
+
 <title>Join</title>
 </head>
+<style>
+	.bir_yy, .bir_mm, .bir_dd{
+		width:160px;
+		display:table-cell;
+	}
+	.bir_mm+.bir_dd, .bir_yy+ .bir_mm{
+		padding-left:10px;
+	}
+
+</style>
 <body>
 
 <div class="container">
@@ -22,13 +33,6 @@
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="username">사용자명</label>
 									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
-								</div>
-
-								<div class="mb-3">
-									<div class="mb-2 w-100">
-										<label class="text-muted" for="nickname">닉네임</label>
-									</div>
-									<input id="nickname" type="text" class="form-control" name="nickname" required>
 								</div>
 								
 								<div class="mb-3">
@@ -55,15 +59,8 @@
 								</div>
 								
 								<div class="mb-3">
-									<div class="mb-2 w-100">
-										<label class="text-muted" for="phone">연락처</label>
-									</div>
-									<input id="phone" type="phone" class="form-control" name="phone >
-								</div>
-								
-								<div class="mb-3">
 									<div class="mb-2 w-100"
-										<label class="text-muted" for="interfield">관심분야 한 줄</label>
+										<label class="text-muted" for="interfield">자기소개</label>
 									</div>
 									<input id="interfield" type="text" class="form-control" name="interfield" >
 								</div>
@@ -74,7 +71,43 @@
 									</div>
 									<input id="address" type="text" class="form-control" name="address" >
 								</div>
-								
+													
+								<div class="mb-3">
+									<div class="mb-2 w-100">
+										<label class="text-muted" for="mm">생년월일</label>
+									</div>
+									<div class="bir_yy">
+										<span class="ps_box">
+											<input type="text" class="form-control" id="yy"  placeholder="년(4자)" maxlength="4">
+										</span>
+									</div>
+									
+									<div class="bir_mm">
+										<span class="ps_box focus">
+										  <select class="custom-select"  id="mm" id="inputGroupSelect01">
+												<option>월</option>
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+												<option>6</option>
+												<option>7</option>
+												<option>8</option>
+												<option>9</option>
+												<option>10</option>
+												<option>11</option>
+												<option>12</option>
+											</select>
+										</span>
+									</div>
+									<div class="bir_dd">
+										<span class="ps_box">
+											<input type="text" class="form-control" id="dd" placeholder="일" maxlength="2">
+										</span>
+									</div>
+										
+								</div>
 								
 <!-- 								버튼 -->
 								<div class="d-flex align-items-center">
@@ -107,10 +140,6 @@
 			alert("사용자명을 입력해주세요")
 			return;
 		}
-		if($("#nickname").val()==""){
-			alert("닉네임을 입력해주세요")
-			return;
-		}
 		if($("#password").val()==""	){
 			alert("비밀번호를 입력해주세요")
 			return;
@@ -128,12 +157,10 @@
 		
 		var data={
 			"name": $("#name").val(),
-			"nickName": $("#nickname").val(),
 			"password": $("#password").val(),
 			"gender": $("#gender").val(),
 			"email":$("#email").val(),
-			"phone":$("#phone").val(),
-			"interField":$("#interfield").val(),
+			"intro":$("#interfield").val(),
 			"address":$("#address").val(),
 			"email":$("#email").val()
 		}
@@ -161,6 +188,8 @@
 		})
 		
 	})
+	
+	
 </script>
 
 </html>

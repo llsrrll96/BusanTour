@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 body {
-	font-family: 'Trebuchet MS', serif;
-  background-color: #fbfbfb;
+	font-family: HelveticaNeue-Light, AppleSDGothicNeo-Light, sans-serif-light;
+  	background-color: #fbfbfb;
 }
 @media (min-width: 991.98px) {
   main {

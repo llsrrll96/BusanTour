@@ -40,11 +40,7 @@ public class PrincipalDetails  implements UserDetails
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return member.getName();
-	}
-	public String getNicname() {
-		return member.getNickName();
 	}
 
 	@Override

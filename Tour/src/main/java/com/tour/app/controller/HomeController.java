@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tour.app.domain.Member;
 import com.tour.app.domain.PageHandler;
 import com.tour.app.dto.Area;
-import com.tour.app.dto.TourAreaDTOInterface;
 import com.tour.app.repository.MemberJpaRepository;
 import com.tour.app.service.MemberService;
-import com.tour.app.service.TourAreaService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,8 +28,6 @@ public class HomeController
 {
 	@Autowired
 	private MemberService memberService;
-	@Autowired
-	private TourAreaService tourAreaService;
 	
 	private final MemberJpaRepository memberJpaRepository;
 	
@@ -58,13 +54,13 @@ public class HomeController
 			@RequestParam(required = false, defaultValue="") String divide)
 			
 	{
-		Page<TourAreaDTOInterface> tourareaDTOs = tourAreaService.getList(pageable);
-		if(!area.isEmpty() )	tourareaDTOs = tourAreaService.getList(area,divide,pageable);
-		model.addAttribute("tourareaDTOs",tourareaDTOs);
+//		Page<TourAreaDTOInterface> tourareaDTOs = tourAreaService.getList(pageable);
+//		if(!area.isEmpty() )	tourareaDTOs = tourAreaService.getList(area,divide,pageable);
+//		model.addAttribute("tourareaDTOs",tourareaDTOs);
 		
 		PageHandler ph = new PageHandler();
-		ph.setPage(tourareaDTOs.getPageable().getPageNumber());// 현재페이지
-		ph.setTotalPage(tourareaDTOs.getTotalPages()); // 전체 페이지
+//		ph.setPage(tourareaDTOs.getPageable().getPageNumber());// 현재페이지
+//		ph.setTotalPage(tourareaDTOs.getTotalPages()); // 전체 페이지
 		int pageBlock = 5;
 		int startBlockPage = ((ph.getPage())/pageBlock)*pageBlock+1;
 		int endBlockPage=startBlockPage+pageBlock-1;

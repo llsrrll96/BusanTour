@@ -149,11 +149,22 @@
 			return;
 		}
 		if($("#interfield").val()==""){
-			alert("관심분야 한줄 깔끔하게 적어주세요")
+			alert("자기소개 한줄 깔끔하게 적어주세요")
 			return;
 		}
-		
-		
+		if($("#yy").val()==""){
+			alert("연도를 입력해주세요")
+			return;
+		}
+		if($("#mm").val()=="월"){
+			alert("월을 선택해주세요")
+			return;
+		}
+		if($("#dd").val()==""){
+			alert("일을 입력해주세요")
+			return;
+		}
+
 		
 		var data={
 			"name": $("#name").val(),
@@ -162,7 +173,8 @@
 			"email":$("#email").val(),
 			"intro":$("#interfield").val(),
 			"address":$("#address").val(),
-			"email":$("#email").val()
+			"email":$("#email").val(),
+			"birthday":$("#yy").val()+"-"+$("#mm").val()+"-"+$("#dd").val()
 		}
 		
 		$.ajax({

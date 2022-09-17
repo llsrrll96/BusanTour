@@ -20,13 +20,17 @@ import org.hibernate.annotations.DynamicInsert;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter@Setter@Entity
+@Getter@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @DynamicInsert
+@Builder
+@Entity
 @Table(name = "members")
 public class Member {
 	@Id
@@ -45,19 +49,17 @@ public class Member {
 	private String intro; //필수, 관심분야 한줄
 	private String address; //필수X, 관심 지역
 	private String profileUrl;
-	private String birthday;
+	private String birthday; //필수
 	private String role; //필수, 권한역할    --> ADMIN_ROLE, USER_ROLE
 	
 	// 테이블 생성시 자동으로 0 , @DynamicInsert -> 값이 없을때 default 값으로 들어간다.
 	@Column(columnDefinition = "varchar(1) default '0'")
 	private String withdraw; //필수, 탈퇴여부
 
-	//tourarea는 일단 단방향
-	
-	// 관심 보드
-//	@OneToMany(mappedBy="member")
-//	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
-	
+	// 댓글
+	@OneToMany(mappedBy="member")
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
+	List<Comment> comments = new ArrayList<>();
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형

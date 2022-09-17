@@ -1,6 +1,8 @@
 package com.tour.app.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import lombok.Builder;
@@ -24,5 +26,7 @@ public class AttractionService
 	private String mainImageNormal;
 	private String mainImageThumb;
 	
+	@Enumerated(EnumType.STRING)
+	private UploadPart uploadPart;
 
 }

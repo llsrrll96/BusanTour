@@ -23,8 +23,8 @@ public class MemberService
 	public void register(Member member) 
 	{
 		String rawPass = member.getPassword();
-		if(rawPass.equals("admin1234!")) member.setRole("ADMIN_ROLE");
-		else member.setRole("USER_ROLE");
+		if(rawPass.equals("admin1234!")) member.setRole("ROLE_ADMIN");
+		else member.setRole("ROLE_USER");
 		
 		String encPass = bCryptPasswordEncoder.encode(rawPass);
 		member.setPassword(encPass);

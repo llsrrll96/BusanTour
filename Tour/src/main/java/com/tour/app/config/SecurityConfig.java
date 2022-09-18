@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티
 		http.authorizeRequests()  //권한
 				.antMatchers("/user/*").authenticated()    // /user 으로 넘어오는 url 은 인증
 				.antMatchers("/tourarea/tourAreaInsert").authenticated()
-				.antMatchers("/manage/*").hasAuthority("ADMIN_ROLE")
+				.antMatchers("/manage/*").hasAuthority("ROLE_ADMIN")
 				.anyRequest().permitAll()
 			.and()
 				.formLogin()

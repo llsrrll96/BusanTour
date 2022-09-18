@@ -1,0 +1,62 @@
+/* 공통 CSS */
+.frame {
+    border: solid 1px #000;
+}
+
+/* Mobile First */
+.frame {
+    width: 50%;
+}
+
+/* Tablet : 768px~1024px 해상도 */
+@media (min-width:768px) and (max-width:1024px) {
+    .frame {
+        width: 80%;
+    }
+}
+
+/* Desktop : 1025px 이상 해상도 */
+@media (min-width:1025px) {
+    .frame {
+        width: 100%;
+    }
+}
+
+.tournav{
+  border: 2px solid rgba(158, 205, 255, 1);
+  border-radius: 30px;
+}
+
+.asearch{
+	color : rgb(0, 0, 0);
+}
+
+.navbar-toggler-icon  {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+} 
+
+span{
+    font-size:15px;
+}
+
+.box{
+    padding:60px 0px;
+}
+
+.box-part{
+    background:#FFF;
+    border-radius:0;
+    padding:60px 10px;
+    margin:30px 0px;
+    border: 1px solid rgba(277, 277, 277,1);
+    
+}
+.text{
+    margin:20px 0px;
+}
+
+.fa{
+     color:#4183D7;
+}
+
+

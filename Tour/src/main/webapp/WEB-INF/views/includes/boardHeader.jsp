@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
    
 <!DOCTYPE html>
 <html>
@@ -15,8 +15,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- 
+
+<link rel="stylesheet" type="text/css" href="../resources/css/tourRoom/tourRoom_css.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/css/tourRoom/roomCreation_css.css"/>
+
 <title>함께해요 부산여행</title>
+<style>
+.nav-link{
+  font-weight: bold
+}
+</style>
 </head>
 <body>
 
@@ -28,26 +36,28 @@
 	<ul class="navbar-nav mr-auto ">
 			    <li class="nav-item">
 			      <a class="navbar-brand" href="/" >
-			      	<img src="\resources\img\busan_logo.png"  width="100" height="50" alt="홈으로">
+			      	<img src="\resources\img\busan_logo.png"  width="100" height="40" alt="홈으로">
 			      </a>
 			    </li>
+			    
+   			    <li class="nav-item mt-2">
+			      <a class="nav-link" href="/tourRoom/tourRooms">여행 모임</a>
+			    </li>
+			    
     </ul>
     
     
 	<ul class="navbar-nav">
-		<sec:authorize access="isAnonymous()">
-		    <li class="nav-item">
-			      <a class="nav-link" href="/join">회원가입</a>
-			    </li>
-			<li class="nav-item">
-			      <a class="nav-link" href="/login">로그인</a>
-			    </li>
-		</sec:authorize>
+			<sec:authorize access="isAnonymous()">
+			    <li class="nav-item">
+				      <a class="nav-link" href="/join">회원가입</a>
+				    </li>
+				<li class="nav-item">
+				      <a class="nav-link" href="/login">로그인</a>
+				    </li>
+			</sec:authorize>
 		
-		    	<li class="nav-item">
-			      <a class="nav-link" href="/manage/manageHome">관리자페이지</a>
-			    </li>
-			<sec:authorize access="hasRole('ADMIN_ROLE')">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
 		    	<li class="nav-item">
 			      <a class="nav-link" href="/manage/manageHome">관리자페이지</a>
 			    </li>

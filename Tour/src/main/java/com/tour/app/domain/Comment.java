@@ -1,3 +1,4 @@
+
 package com.tour.app.domain;
 
 import java.util.Date;
@@ -16,33 +17,34 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Getter @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "comments")
-public class Comment 
-{
+public class Comment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long commentId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int commentid;
 	
-	@JoinColumn(name="userId")
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Member member;
+	//fk
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="userid")
+	private Member members;
 	
-//	@JoinColumn(name= "rboardId")
-//	@ManyToOne(fetch=FetchType.LAZY)
-//	private RoomBoard roomBoard;
+	//fk
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="boardid")
+	private RoomBoard room_boards;
 	
-	@Column(length = 1000, nullable = false)
 	private String body;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date regdate;
+	@Column(name="regdate")
+	private Date regdate; // 입력일자
+
 }

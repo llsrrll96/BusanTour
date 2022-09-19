@@ -1,6 +1,49 @@
 package com.tour.app.domain;
 
-public class RoomMember 
-{
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.tour.app.dto.RoleEnum;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter
+@Entity
+@NoArgsConstructor
+@Table(name = "room_members")
+public class RoomMember {
+  @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)	
+  private int memberid;
+  
+  //fk
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name="userid")
+  private Member members;
+//  private int userid;
+  
+  //fk
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name="roomid")
+  private Room rooms;
+//  private int roomid;
+  
+  @Enumerated(EnumType.STRING)
+  @Column(length = 10)
+  private RoleEnum role;
+// private String role; //enum
+	
 }

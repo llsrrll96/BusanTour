@@ -51,16 +51,35 @@ public class Member {
 	// 테이블 생성시 자동으로 0 , @DynamicInsert -> 값이 없을때 default 값으로 들어간다.
 	@Column(columnDefinition = "varchar(1) default '0'")
 	private String withdraw; //필수, 탈퇴여부
-
-	//tourarea는 일단 단방향
-	
-	// 관심 보드
-//	@OneToMany(mappedBy="member")
-//	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
-	
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP) // 날짜형
 	@Column(name="regdate")
 	private Date regdate; // 작성일자
+	
+	// 모임방 관계설정
+	@OneToMany(mappedBy="room")
+	@JsonIgnoreProperties("room") // 양방향때 서로 호출되는 것을 방지
+	private List<Room> rooms = new ArrayList<>();
+	
+	// 모임방의 게시물 관계설정
+	@OneToMany(mappedBy="roomboard")
+	@JsonIgnoreProperties("roomboard") // 양방향때 서로 호출되는 것을 방지
+	private List<RoomBoard> roomboards = new ArrayList<>();
+	
+	// 게시물의 댓글 관계설정
+	@OneToMany(mappedBy="comment")
+	@JsonIgnoreProperties("comment") // 양방향때 서로 호출되는 것을 방지
+	private List<Comment> comments = new ArrayList<>();
+	
+	// 모임멤버의 관계설정
+	@OneToMany(mappedBy="roommember")
+	@JsonIgnoreProperties("roommember") // 양방향때 서로 호출되는 것을 방지
+	private List<RoomMember> roommembers = new ArrayList<>();
+	
+	// 모임멤버 신청자의 관계설정
+	@OneToMany(mappedBy="appliedmember")
+	@JsonIgnoreProperties("appliedmember") // 양방향때 서로 호출되는 것을 방지
+	private List<AppliedMember> appliedmembers = new ArrayList<>();
+	
 }

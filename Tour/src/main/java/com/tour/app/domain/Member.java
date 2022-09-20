@@ -37,6 +37,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="userid")
 	private Long userid; //필수, 사용자 ID
+	
 	@Column(nullable=false)
 	private String name; //필수, 성명
 	

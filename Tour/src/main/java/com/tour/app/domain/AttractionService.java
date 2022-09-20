@@ -1,8 +1,8 @@
 package com.tour.app.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import lombok.Builder;
@@ -16,7 +16,6 @@ import lombok.Setter;
 public class AttractionService 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String ucSeq;
 	private String mainTitle;
 	private String gugunName;
@@ -26,7 +25,8 @@ public class AttractionService
 	private String addr1;
 	private String mainImageNormal;
 	private String mainImageThumb;
-	private String views;
-	private String api;  // 운영진 등록
+	
+	@Enumerated(EnumType.STRING)
+	private UploadPart uploadPart;
 
 }

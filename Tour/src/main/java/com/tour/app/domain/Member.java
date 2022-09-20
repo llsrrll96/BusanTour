@@ -20,19 +20,23 @@ import org.hibernate.annotations.DynamicInsert;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter@Setter@Entity
+@Getter@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @DynamicInsert
+@Builder
+@Entity
 @Table(name = "members")
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="userid")
-	private int userid; //필수, 사용자 ID
+	private Long userid; //필수, 사용자 ID
 	@Column(nullable=false)
 	private String name; //필수, 성명
 	
@@ -58,28 +62,18 @@ public class Member {
 	private Date regdate; // 작성일자
 	
 	// 모임방 관계설정
-	@OneToMany(mappedBy="room")
-	@JsonIgnoreProperties("room") // 양방향때 서로 호출되는 것을 방지
+	@OneToMany(mappedBy="member")
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
 	private List<Room> rooms = new ArrayList<>();
 	
 	// 모임방의 게시물 관계설정
-	@OneToMany(mappedBy="roomboard")
-	@JsonIgnoreProperties("roomboard") // 양방향때 서로 호출되는 것을 방지
-	private List<RoomBoard> roomboards = new ArrayList<>();
+	@OneToMany(mappedBy="member")
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
+	private List<RoomBoard> roomBoards = new ArrayList<>();
 	
 	// 게시물의 댓글 관계설정
-	@OneToMany(mappedBy="comment")
-	@JsonIgnoreProperties("comment") // 양방향때 서로 호출되는 것을 방지
+	@OneToMany(mappedBy="member")
+	@JsonIgnoreProperties("member") // 양방향때 서로 호출되는 것을 방지
 	private List<Comment> comments = new ArrayList<>();
-	
-	// 모임멤버의 관계설정
-	@OneToMany(mappedBy="roommember")
-	@JsonIgnoreProperties("roommember") // 양방향때 서로 호출되는 것을 방지
-	private List<RoomMember> roommembers = new ArrayList<>();
-	
-	// 모임멤버 신청자의 관계설정
-	@OneToMany(mappedBy="appliedmember")
-	@JsonIgnoreProperties("appliedmember") // 양방향때 서로 호출되는 것을 방지
-	private List<AppliedMember> appliedmembers = new ArrayList<>();
 	
 }

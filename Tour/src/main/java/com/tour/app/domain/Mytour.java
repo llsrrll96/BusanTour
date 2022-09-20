@@ -1,15 +1,17 @@
 package com.tour.app.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,32 +19,41 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
-@Getter @Setter
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "mytours")
-public class Mytour {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int tourid;
+public class Mytour 
+{
+	@Id 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long tourid;
 	
-	//참여방 관계설정
-	@OneToMany(mappedBy="mytour")
-	private List<Room> rooms = new ArrayList<>();
+	@JoinColumn(name = "userid")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private  Member member;
 	
-	private String title; //제목
-	private String body;  //내용
-	private String lat;   //위도
-	private String lng;   //경도
-	private Long rate;    //평점
-	private String range; //범위??
-	private String img;   //이미지주소
-	private String place; //장소
+	@Column(length=100, nullable= false)
+	private String title;
+	
+	@Column(length=500, nullable= false)
+	private String body;
+	
+	private String lat; // 위도
+	private String lng; // 경도
+	
+	private Integer rate; // 평점
+	
+	@Enumerated(EnumType.STRING)
+	private BoardScope scope;
+	
+	@Column(name = "mainimg_url")
+	private String mainImgUrl;
+	
+	private String place;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="regdate")
-	private Date regdate; // 생성일자
-
+	private Date regdate;
 }

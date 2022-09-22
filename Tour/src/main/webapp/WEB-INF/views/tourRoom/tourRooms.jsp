@@ -6,7 +6,12 @@
 
 <!-- 	페이지 설명 -->
 	<div class="alert alert-dismissible alert-light">
-	  <strong>당신에게 맞는 여행 모임을 찾아 보세요 !</strong> 
+	  <strong>당신에게 맞는 여행 모임을 찾아 보세요 !</strong> <br/> <br/>
+	  
+	  <sec:authorize access="isAuthenticated()">
+	  	  <h4><a  href="/tourRoom/roomCreation">모임 개설하기 !</a></h4> 
+  	  </sec:authorize>
+	  
 	  
 	</div>
 
@@ -40,29 +45,32 @@
 	     	<div class="row">
 				 
 <!-- 				 반복-->
-				    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+				<c:forEach items="${roomDtos}" var="roomDto">
+				    <div class="box-root col-lg-4 col-md-4 col-sm-4 col-xs-12">
 	               
 						<div class="box-part text-center">
 	                        
 	                        <div class="card-body">
-							  <h5 class="card-title">title </h5>
+							  <h5 class="card-title">${roomDto.title } </h5>
 							</div>
-							
-							<svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-							  <rect width="100%" height="100%" fill="#868e96"></rect>
-							  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-							</svg>
+							<a href="">
+								<img src="/resources/img/${roomDto.bannerimgurl }" class="d-block user-select-none" 
+								width="100%" height="200" aria-label="Placeholder: Image cap"  onerror="this.src='/resources/img/basis.jpg'">
+								</img>
+							</a>
 							
 							<div class="card-body">
-							  <p class="card-text">content.</p>
+							  <p class="card-text">${roomDto.introduce }</p>
 							</div>
 							<ul class="list-group list-group-flush">
-							  <li class="list-group-item">인원</li>
+							  <li class="list-group-item">
+							  	<fmt:formatDate value="${roomDto.regdate }" pattern="yyyy-MM-dd"/>
+							  </li>
 						 	</ul>	
 	                        
 						 </div>
 					</div>	 
-					
+				</c:forEach>
 					 
 			
 			</div>		
@@ -76,7 +84,17 @@
 	
 	
 </div>
-	    
+
+<script>
+$(function(){
+	$(".box-part").css('box-shadow','0px 2px 0px 0px rgba(0, 0, 0, 0.3)');
+	
+});
+
+
+
+
+</script>
 
 </body>
 </html>

@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter // 시큐리티
 		http.csrf().disable(); // 의도된 웹 사이트 요청 공격
 		http.authorizeRequests()  //권한
 				.antMatchers("/user/*").authenticated()    // /user 으로 넘어오는 url 은 인증
-				.antMatchers("/tourarea/tourAreaInsert").authenticated()
+				.antMatchers("/tourRoom/roomCreation").authenticated()
 				.antMatchers("/manage/*").hasAuthority("ROLE_ADMIN")
 				.anyRequest().permitAll()
 			.and()

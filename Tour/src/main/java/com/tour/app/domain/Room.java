@@ -16,8 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -43,6 +45,8 @@ public class Room {
 	@Column(nullable=false)
 	private String title;
 	
+	@Transient
+	private MultipartFile bannerMultiFile;
 	private String bannerimgurl;
 	private String introduce;
 	private String thema; //산책, 바다. 스포츠

@@ -6,7 +6,12 @@
 
 <!-- 	페이지 설명 -->
 	<div class="alert alert-dismissible alert-light">
-	  <strong>당신에게 맞는 여행 모임을 찾아 보세요 !</strong> 
+	  <strong>당신에게 맞는 여행 모임을 찾아 보세요 !</strong> <br/> <br/>
+	  
+	  <sec:authorize access="isAuthenticated()">
+	  	  <h4><a  href="/tourRoom/roomCreation">모임 개설하기 !</a></h4> 
+  	  </sec:authorize>
+	  
 	  
 	</div>
 
